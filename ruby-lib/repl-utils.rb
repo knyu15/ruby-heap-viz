@@ -1,8 +1,6 @@
 require_relative 'sys-utils'
 
-module ReplUtils
-  include SysUtils
-  
+module ReplUtils  
   def example!
     #Demonstrate object creation and referencing by a variable
     @greeting = Example::String.new("Hello")
