@@ -1,4 +1,8 @@
+require_relative 'sys-utils'
+
 module ReplUtils
+  include SysUtils
+  
   def example!
     #Demonstrate object creation and referencing by a variable
     @greeting = Example::String.new("Hello")
@@ -21,12 +25,9 @@ module ReplUtils
   end
 
   def viz!
-    open_is_present = system('command -v open >/dev/null 2>&1')
-    if open_is_present
-      system('open viz.html')
-    else
-      puts "The `open` executable cannot be found in your PATH"
-    end
+    puts 'The `open` executable cannot be found in your PATH or `open` command is '\
+         'not available for you current system, sorry. Please open viz.html directly '\
+         'in your browser.' unless SysUtils::open('viz.html')
   end
 
   def graph_report
